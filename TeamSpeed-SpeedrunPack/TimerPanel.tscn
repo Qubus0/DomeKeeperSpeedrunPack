@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://mods-unpacked/TeamSpeed-SpeedrunPack/timer_panel.gd" type="Script" id=1]
+[ext_resource path="res://content/hud/wavemeter/time.png" type="Texture" id=2]
+
+[sub_resource type="DynamicFontData" id=3]
+antialiased = false
+font_path = "res://gui/fonts/basis33.regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+font_data = SubResource( 3 )
+
+[node name="TimerPanel" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+size = Vector2( 12, 3 )
+layoutWeights = Vector2( 0, 1 )
+
+[node name="TimerIcon" type="TextureRect" parent="."]
+margin_left = 4.0
+margin_top = 5.0
+margin_right = 10.0
+margin_bottom = 14.0
+rect_rotation = -0.284773
+texture = ExtResource( 2 )
+stretch_mode = 6
+
+[node name="Timer" type="Label" parent="."]
+unique_name_in_owner = true
+margin_left = 13.0
+margin_top = 2.0
+margin_right = 62.0
+margin_bottom = 18.0
+custom_colors/font_color = Color( 1, 0.92549, 0.839216, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "000 .00"
+align = 2
+valign = 1
