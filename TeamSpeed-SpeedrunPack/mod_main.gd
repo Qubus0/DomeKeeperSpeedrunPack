@@ -19,5 +19,6 @@ func install_script_extensions(modLoader) -> void:
 	# Any script extensions should go in this directory, and should follow the same directory structure as vanilla
 	extensions_dir_path = mod_dir_path.plus_file("extensions")
 	modLoader.install_script_extension(extensions_dir_path.plus_file("content/gamemode/relichunt/Relichunt.gd"))
+	modLoader.install_script_extension(extensions_dir_path.plus_file("stages/level/LevelStage.gd"))
 
 
