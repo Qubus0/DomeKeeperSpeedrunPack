@@ -42,9 +42,23 @@ func openPauseMenu():
 		ModLoaderLog.warning("Node VBoxContainer not found under MenuPanel", LOG_NAME)
 		return
 
-	var seed_label := Label.new()
-	seed_label.text = "Seed: %s" % Level.levelSeed
-	seed_label.align = Label.ALIGN_CENTER
-	vbox.add_child(seed_label)
+	var seed_button := Button.new()
+	seed_button.text = "Seed: %s" % Level.levelSeed
+	seed_button.align = Button.ALIGN_CENTER
+	seed_button.connect("pressed", self, "_on_seed_pressed", [str(Level.levelSeed), seed_button])
+
+	vbox.add_child(seed_button)
+	Style.init(seed_button)
+
+
+func _on_seed_pressed(level_seed: String, seed_button: Button) -> void:
+	OS.clipboard = level_seed
+
+	if not "(copied)" in seed_button.text:
+		seed_button.text = seed_button.text + " (copied)"
+		yield(get_tree().create_timer(1), "timeout")
+		seed_button.text = seed_button.text.trim_suffix(" (copied)")
+
+
 
 
